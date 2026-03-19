@@ -33,7 +33,7 @@ jobs:
         shell: pwsh
         run: |
           cd release
-          Get-ChildItem * | ForEach-Object {
+          Get-ChildItem *.zip | ForEach-Object {
             $hash = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
             "$hash  $($_.Name)" | Out-File -Append checksums.txt -Encoding utf8
           }
